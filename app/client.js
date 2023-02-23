@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export default () => {
   mongoose
-    .connect("mongodb://127.0.0.1:27017/students")
+    .connect("mongodb://127.0.0.1:27017/user")
     .then(() => {
       console.info("Connected to MongoDB");
     })
