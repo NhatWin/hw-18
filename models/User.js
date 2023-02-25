@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
@@ -39,4 +39,6 @@ userSchema.virtual("userFriends").get(function () {
   return this.friends.length;
 });
 
-export default module("User", userSchema);
+const User = model("User", userSchema);
+
+export default User;
