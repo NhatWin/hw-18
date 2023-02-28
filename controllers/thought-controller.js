@@ -10,7 +10,6 @@ const controller = {
   },
   createThought(newThought) {
     return Thought.create(newThought).then((thought) => {
-      console.log(thought);
       return User.findOneAndUpdate(
         { username: thought.username },
         { $push: { thoughts: thought._id } },
@@ -27,6 +26,22 @@ const controller = {
   },
   updateThought(id, newData) {
     return Thought.findByIdAndUpdate(id, newData);
+  },
+  createReaction(id, newReaction) {
+    return Thought.findByIdAndUpdate(
+      { _id: id },
+      {
+        $push: { reaction: newReaction },
+      },
+      { new: true }
+    );
+  },
+  deleteReaction(thoughtId, reactionsId) {
+    return Thought.findByIdAndUpdate(
+      { _id: thoughtId },
+      { $pull: { reaction: { reactionId: reactionsId } } },
+      { new: true }
+    );
   },
 };
 

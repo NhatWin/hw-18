@@ -48,4 +48,22 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.post("/reaction/:id", (req, res) => {
+  thoughtController
+    .createReaction(req.params.id, req.body)
+    .then((user) => res.json(["Reaction created"]))
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
+router.delete("/:thoughtId/reaction/:reactionId", (req, res) => {
+  thoughtController
+    .deleteReaction(req.params.thoughtId, req.params.reactionId)
+    .then((user) => res.json(["Reaction deleted"]))
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
