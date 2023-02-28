@@ -1,5 +1,5 @@
-const { Schema, Types } = require("mongoose");
-const date = require("../utils/date.js");
+import { Schema, Types } from "mongoose";
+import formatDate from "../utils/date.js";
 
 const reactionSchema = new Schema(
   {
@@ -19,7 +19,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (time) => date(time),
+      get: (time) => formatDate(time),
     },
   },
   {
@@ -30,4 +30,4 @@ const reactionSchema = new Schema(
   }
 );
 
-module.exports = reactionSchema;
+export default reactionSchema;

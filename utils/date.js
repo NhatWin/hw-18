@@ -1,7 +1,7 @@
-const moment = require("moment");
+import moment from "moment";
 
 const formatDate = (date) => {
   moment(date).format("MMM DD, YYYY [at] hh:mm a");
 };
 
-module.exports = formatDate;
+export default formatDate;

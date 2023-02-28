@@ -16,6 +16,22 @@ const controller = {
   updateUser(id, newData) {
     return User.findByIdAndUpdate(id, newData);
   },
+  addFriend(id, newFriend) {
+    return User.findByIdAndUpdate(
+      { _id: id },
+      {
+        $push: { friends: newFriend },
+      },
+      { new: true }
+    );
+  },
+  deleteFriend(id, friend) {
+    return User.findByIdAndUpdate(
+      { _id: id },
+      { $pull: { friends: friend } },
+      { new: true }
+    );
+  },
 };
 
 export default controller;
